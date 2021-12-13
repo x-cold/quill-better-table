@@ -4,6 +4,7 @@ import Header from './header'
 
 const Break = Quill.import("blots/break")
 const Block = Quill.import("blots/block")
+const List = Quill.import("formats/list")
 const Container = Quill.import("blots/container")
 
 const COL_ATTRIBUTES = ["width"]
@@ -107,7 +108,7 @@ TableCellLine.tagName = "P"
 
 class TableCell extends Container {
   checkMerge() {
-    if (super.checkMerge() && this.next.children.head != null) {
+    if (super.checkMerge() && this.next.children.head != null && this.children.head.formats && this.children.tail.formats) {
       const thisHead = this.children.head.formats()[this.children.head.statics.blotName]
       const thisTail = this.children.tail.formats()[this.children.tail.statics.blotName]
       const nextHead = this.next.children.head.formats()[this.next.children.head.statics.blotName]
@@ -894,6 +895,8 @@ TableCell.requiredContainer = TableRow
 
 TableCell.allowedChildren = [TableCellLine, Header]
 TableCellLine.requiredContainer = TableCell
+
+// TableCellLine.allowedChildren = [List.requiredContainer]
 
 TableColGroup.allowedChildren = [TableCol]
 TableColGroup.requiredContainer = TableContainer

@@ -392,3 +392,7 @@ function isInTableCell (current) {
 }
 
 export default BetterTable;
+
+export {
+  Quill,
+}

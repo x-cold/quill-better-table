@@ -41,16 +41,16 @@ module.exports = (env, argv) => {
         'src': path.resolve(__dirname, './src'),
         'dist': path.resolve(__dirname, './dist')
       },
-      extensions: ['.js', '.scss', '.html']
+      extensions: ['.js', '.ts', '.scss', '.html']
     },
 
     externals: {
-      'quill': {
-        commonjs: 'quill',
-        commonjs2: 'quill',
-        amd: 'quill',
-        root: 'Quill'
-      }
+      // 'quill': {
+      //   commonjs: 'quill',
+      //   commonjs2: 'quill',
+      //   amd: 'quill',
+      //   root: 'Quill'
+      // }
     },
 
     module: {
@@ -113,7 +113,8 @@ module.exports = (env, argv) => {
               ]
             }
           }
-        }
+        },
+        { test: /\.tsx?$/, loader: 'ts-loader' }
       ]
     },
 

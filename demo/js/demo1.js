@@ -1,4 +1,5 @@
-import QuillBetterTable from 'src/quill-better-table.js'
+import QuillBetterTable, { Quill } from 'src/quill-better-table.js'
+import content from './content.json'
 // import better-table styles file
 import 'src/assets/quill-better-table.scss'
 
@@ -29,6 +30,9 @@ window.onload = () => {
       }
     }
   })
+
+  quill.setContents(content)
+  window.q = quill
 
   let tableModule = quill.getModule('better-table')
   document.body.querySelector('#insert-table')
